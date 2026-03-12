@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MATH 31.2 — Integral Calculus LT Study Guide</title>
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], tags: 'none' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f5f6fa;
+      color: #1a1a2e;
+      line-height: 1.6;
+      padding: 0 0 60px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #e8eaf6;
+      padding: 36px 40px 28px;
+    }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: .5px; }
+    header p  { margin-top: 6px; color: #90caf9; font-size: .95rem; }
+
+    main { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    .module {
+      margin-top: 48px;
+    }
+    .module-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0f3460;
+      border-bottom: 3px solid #0f3460;
+      padding-bottom: 8px;
+      margin-bottom: 28px;
+    }
+
+    .topic { margin-top: 36px; }
+    .topic-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1565c0;
+      background: #e3f2fd;
+      padding: 7px 14px;
+      border-left: 4px solid #1565c0;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 18px;
+    }
+
+    .problem-item {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      padding: 20px 22px;
+      margin-bottom: 18px;
+    }
+
+    .problem-label {
+      font-size: .75rem;
+      font-weight: 700;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .problem-q {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .problem-context {
+      font-size: .88rem;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 12px;
+      background: #fafafa;
+      border-left: 3px solid #ccc;
+      padding: 6px 10px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .reveal-btn {
+      background: #1565c0;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 18px;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .reveal-btn:hover { background: #0d47a1; }
+
+    .solution-box {
+      display: none;
+      margin-top: 16px;
+      border-top: 2px dashed #e0e0e0;
+      padding-top: 14px;
+    }
+
+    .sol-intro {
+      font-style: italic;
+      color: #37474f;
+      background: #f0f4f8;
+      border-left: 3px solid #78909c;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 14px;
+      font-size: .93rem;
+    }
+
+    .sol-step {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .sol-num {
+      flex-shrink: 0;
+      min-width: 68px;
+      background: #1565c0;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 4px 8px;
+      border-radius: 6px;
+      letter-spacing: .5px;
+      margin-top: 2px;
+    }
+    .sol-num.ans {
+      background: #2e7d32;
+    }
+    .sol-num.warn {
+      background: #e65100;
+    }
+
+    .sol-text {
+      font-size: .93rem;
+      flex: 1;
+      line-height: 1.7;
+    }
+    .sol-text .MathJax_Display, .sol-text mjx-container[display="true"] {
+      margin: .5em 0 !important;
+    }
+
+    .warning-box {
+      background: #fff3e0;
+      border: 2px solid #e65100;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-top: 14px;
+      font-size: .92rem;
+    }
+    .warning-box .w-title {
+      font-weight: 700;
+      color: #e65100;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MATH 31.2 — Integral Calculus</h1>
+  <p>LT Study Guide &mdash; All solutions reviewed and corrected</p>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════
+     MODULE 1: THE DEFINITE INTEGRAL
+═══════════════════════════════════════════════════════ -->
+<div class="module">
+<div class="module-title">Module 1 &mdash; The Definite Integral</div>
+
+<!-- ─── Riemann Sums ─────────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Riemann Sums &amp; The Limit Definition</div>
+
+<!-- Riemann ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Show that
+    \[\lim_{n\to\infty}\!\left(1+\frac{2}{n^2}+\frac{4}{n^2}+\frac{6}{n^2}+\cdots+\frac{2n}{n^2}\right) = \frac{1}{2}\int_1^3(1+x)\,dx.\]
+  </div>
+  <div class="problem-context">This is directly from your past LT. The key skill: factor out \(\Delta x\) from each term and identify the function.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: rewrite the sum into the form \(\sum f(x_i)\,\Delta x\), then read off \(f\), \(a\), and \(b\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Write the sum in sigma notation. The fractional terms are \(\frac{2}{n^2}, \frac{4}{n^2}, \ldots, \frac{2n}{n^2}\), which is \(\sum_{i=1}^{n}\frac{2i}{n^2}\). Including the leading 1:
+        \[\text{Expression} = 1 + \sum_{i=1}^{n}\frac{2i}{n^2}\]
+        Rewrite the 1 as \(\sum_{i=1}^{n}\frac{1}{n}\) (since \(n\) copies of \(\frac{1}{n}\) sum to 1):
+        \[= \sum_{i=1}^{n}\frac{1}{n} + \sum_{i=1}^{n}\frac{2i}{n^2} = \sum_{i=1}^{n}\!\left(\frac{1}{n}+\frac{2i}{n^2}\right) = \sum_{i=1}^{n}\frac{1}{n}\!\left(1+\frac{2i}{n}\right)\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Identify the Riemann sum components. We want the form \(\sum f(x_i)\,\Delta x\).
+        Set \(\Delta x = \frac{2}{n}\), which means the interval has length \(b - a = 2\). Choose \(a = 1\), \(b = 3\).
+        Right endpoints: \(x_i = 1 + i\cdot\frac{2}{n} = 1 + \frac{2i}{n}\).
+        Now compare: our sum is \(\sum_{i=1}^{n}\frac{1}{n}\!\left(1+\frac{2i}{n}\right)\). Factor to show \(\Delta x\):
+        \[\frac{1}{n} = \frac{1}{2}\cdot\frac{2}{n} = \frac{1}{2}\,\Delta x\]
+        So the sum becomes:
+        \[\sum_{i=1}^{n}\frac{1}{2}\,\Delta x\cdot\underbrace{\left(1+\frac{2i}{n}\right)}_{x_i} = \sum_{i=1}^{n}\frac{1}{2}(1+x_i)\,\Delta x\]
+        This is a Riemann sum for \(f(x) = \frac{1}{2}(1+x)\).
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 3</span>
+      <div class="sol-text">Take the limit:
+        \[\lim_{n\to\infty}\sum_{i=1}^{n}\frac{1}{2}(1+x_i)\,\Delta x = \int_1^3\frac{1}{2}(1+x)\,dx = \frac{1}{2}\int_1^3(1+x)\,dx\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">The limit equals \(\dfrac{1}{2}\displaystyle\int_1^3(1+x)\,dx\) with \(f(x)=\tfrac{1+x}{2}\), \(a=1\), \(b=3\), \(\Delta x=\tfrac{2}{n}\). &#10003;</div>
+    </div>
+  </div>
+</div>
+
+<!-- Riemann ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Evaluate
+    \[\lim_{n\to\infty}\sum_{i=1}^{n}\frac{1}{n}\cdot\frac{1}{1+\!\left(\dfrac{i}{n}\right)^{\!2}}.\]
+  </div>
+  <div class="problem-context">Rewrite as a Riemann sum on \([0,1]\), identify the integral, then compute it.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: match \(\Delta x\) and \(x_i\) to read off the integral directly.</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Set \(\Delta x = \frac{1}{n}\) and right endpoints \(x_i = \frac{i}{n}\) on \([0,1]\). The sum has the form
+        \[\sum_{i=1}^{n}f(x_i)\,\Delta x \quad\text{with}\quad f(x)=\frac{1}{1+x^2}.\]
+        As \(n\to\infty\) this is a Riemann sum for \(\displaystyle\int_0^1\frac{dx}{1+x^2}\).
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Evaluate the integral using the standard arctangent antiderivative:
+        \[\int_0^1\frac{dx}{1+x^2} = \Big[\arctan x\Big]_0^1 = \arctan 1 - \arctan 0 = \frac{\pi}{4} - 0 = \frac{\pi}{4}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{\pi}{4}\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Riemann -->
+
+<!-- ─── FTC Part 1 ────────────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Fundamental Theorem of Calculus — Part 1</div>
+
+<!-- FTC1 ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Find
+    \[\frac{d}{dx}\int_{x}^{x^2}\sin(t^2)\,dt.\]
+  </div>
+  <div class="problem-context">Both limits depend on \(x\). Use the Leibniz rule: \(\frac{d}{dx}\int_{g(x)}^{h(x)}f(t)\,dt = f(h(x))\,h'(x) - f(g(x))\,g'(x)\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: apply Leibniz differentiation under the integral sign with both limits variable.</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Identify the pieces: \(f(t) = \sin(t^2)\), upper limit \(h(x)=x^2\) with \(h'(x)=2x\), lower limit \(g(x)=x\) with \(g'(x)=1\).</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Apply the Leibniz rule:
+        \[\frac{d}{dx}\int_{x}^{x^2}\sin(t^2)\,dt = \sin\!\big((x^2)^2\big)\cdot 2x - \sin(x^2)\cdot 1 = 2x\sin(x^4) - \sin(x^2).\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(2x\sin(x^4) - \sin(x^2)\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+<!-- FTC1 ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Evaluate
+    \[\lim_{x\to 2}\frac{1}{x-2}\int_2^x 4\ln(t^2+1)\,dt.\]
+  </div>
+  <div class="problem-context">Recognize this limit as the definition of a derivative. Apply FTC1 directly.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: the limit has the form \(\lim_{x\to a}\frac{F(x)-F(a)}{x-a} = F'(a)\) where \(F(x)=\int_2^x 4\ln(t^2+1)\,dt\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Let \(F(x)=\displaystyle\int_2^x 4\ln(t^2+1)\,dt\). Note \(F(2)=0\), so the limit equals \(F'(2)\).</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">By FTC1: \(F'(x) = 4\ln(x^2+1)\). Evaluate at \(x=2\):
+        \[F'(2) = 4\ln(4+1) = 4\ln 5.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(4\ln 5\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+<!-- FTC1 ③ -->
+<div class="problem-item">
+  <div class="problem-label">Problem ③</div>
+  <div class="problem-q">Evaluate
+    \[\lim_{x\to 3}\frac{1}{2(x-3)}\int_5^{x^2}\ln(t-4)\,dt.\]
+  </div>
+  <div class="problem-context">The upper limit is \(x^2\), so you will need the chain rule. Factor the denominator to match \(F'(3)\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: define \(F(x)=\int_5^{x^2}\ln(t-4)\,dt\) and rewrite the limit as \(\frac{1}{2}F'(3)\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Note that \(F(3)=\int_5^9\ln(t-4)\,dt\) is a constant, so
+        \[\frac{F(x)-F(3)}{2(x-3)} = \frac{1}{2}\cdot\frac{F(x)-F(3)}{x-3}\xrightarrow{x\to 3}\frac{1}{2}F'(3).\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Differentiate \(F\) using FTC1 and the chain rule (upper limit \(u=x^2\), \(u'=2x\)):
+        \[F'(x) = \ln(x^2-4)\cdot 2x.\]
+        Evaluate at \(x=3\):
+        \[F'(3) = \ln(9-4)\cdot 6 = 6\ln 5.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 3</span>
+      <div class="sol-text">Combine:
+        \[\lim_{x\to 3}\frac{1}{2(x-3)}\int_5^{x^2}\ln(t-4)\,dt = \frac{1}{2}F'(3) = \frac{1}{2}\cdot 6\ln 5 = 3\ln 5.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(3\ln 5\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+<!-- FTC1 ④ -->
+<div class="problem-item">
+  <div class="problem-label">Problem ④</div>
+  <div class="problem-q">Evaluate
+    \[\lim_{x\to 5}\frac{1}{2x-10}\int_{-x}^{x-10}\frac{t}{t^3+2}\,dt.\]
+  </div>
+  <div class="problem-context">Both limits move with \(x\). Apply the Leibniz rule carefully — the lower limit is \(-x\), so its derivative is \(-1\), producing a sign flip you must track.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: let \(F(x)=\int_{-x}^{x-10}\frac{t}{t^3+2}\,dt\). Rewrite the limit as \(\frac{1}{2}F'(5)\), then differentiate \(F\) using the Leibniz rule.</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">At \(x=5\): both limits equal \(-5\), so \(F(5)=0\) and \(2x-10=0\). This is a \(\frac{0}{0}\) form. Rewrite:
+        \[\frac{F(x)}{2x-10} = \frac{F(x)-F(5)}{2(x-5)} = \frac{1}{2}\cdot\frac{F(x)-F(5)}{x-5}\to\frac{1}{2}F'(5).\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Set \(f(t)=\frac{t}{t^3+2}\). Upper limit \(h(x)=x-10\), \(h'(x)=1\). Lower limit \(g(x)=-x\), \(g'(x)=-1\). Leibniz rule:
+        \[F'(x) = f(x-10)\cdot 1 - f(-x)\cdot(-1) = f(x-10) + f(-x).\]
+        <em>Note: the lower-limit term gets a double negative — do not drop it.</em>
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 3</span>
+      <div class="sol-text">Evaluate at \(x=5\). Both arguments equal \(-5\):
+        \[f(-5) = \frac{-5}{(-5)^3+2} = \frac{-5}{-123} = \frac{5}{123}.\]
+        \[F'(5) = f(-5) + f(-5) = \frac{5}{123}+\frac{5}{123} = \frac{10}{123}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{1}{2}\cdot\dfrac{10}{123} = \dfrac{5}{123}\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic FTC1 -->
+
+<!-- ─── FTC Part 2 ────────────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Fundamental Theorem of Calculus — Part 2</div>
+
+<!-- FTC2 ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Evaluate
+    \[\int_1^4 \frac{dy}{\sqrt{8y-16}}.\]
+  </div>
+  <div class="problem-context">Factor inside the radical first. Then check whether the integrand is defined over the entire interval before applying FTC2.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: simplify the integrand, then check the domain carefully.</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Factor: \(8y-16 = 8(y-2)\). The integrand becomes
+        \[\frac{1}{\sqrt{8(y-2)}} = \frac{1}{2\sqrt{2}\,\sqrt{y-2}}.\]
+        For this to be real, we need \(y-2 > 0\), i.e.\ \(y > 2\).
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num warn">&#9888; Warning</span>
+      <div class="sol-text">
+        <div class="warning-box">
+          <div class="w-title">&#9888; Singularity inside the interval</div>
+          The integrand requires \(y > 2\). Since \(y = 2\) lies <em>inside</em> \([1,4]\), the integrand is <strong>not defined</strong> for \(y \in [1,2)\) (the radicand is negative there) and blows up as \(y \to 2^+\).
+          <br><br>
+          As a result, \(\displaystyle\int_1^4 \frac{dy}{\sqrt{8y-16}}\) <strong>does not exist</strong> as a standard definite integral — the integrand is not real-valued on part of the domain. This problem is ill-posed as written.
+          <br><br>
+          <strong>For reference:</strong> if the lower limit were \(2\) instead of \(1\), the improper integral \(\displaystyle\int_2^4 \frac{dy}{\sqrt{8(y-2)}}\) would converge:
+          \[\int_2^4 \frac{dy}{2\sqrt{2}\,\sqrt{y-2}} = \frac{1}{2\sqrt{2}}\cdot\Big[2\sqrt{y-2}\Big]_2^4 = \frac{1}{2\sqrt{2}}\cdot 2\sqrt{2} = 1.\]
+        </div>
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">The integral over \([1,4]\) is <strong>undefined</strong> (the integrand is not real on \([1,2)\)).</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic FTC2 -->
+
+<!-- ─── Properties of Definite Integrals ─────────────── -->
+<div class="topic">
+<div class="topic-title">Properties of Definite Integrals</div>
+
+<!-- Properties ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Show that
+    \[\frac{1}{6e}\;\le\;\int_0^1\frac{xe^x}{1+2e^x}\,dx\;\le\;\frac{1}{2}.\]
+  </div>
+  <div class="problem-context">Use the Comparison Property: if \(m \le f(x) \le M\) on \([a,b]\), then \(m(b-a)\le\int_a^b f\,dx\le M(b-a)\). Find constants \(m\) and \(M\) by bounding the integrand directly.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: bound the integrand \(f(x)=\dfrac{xe^x}{1+2e^x}\) between two constants, then apply the Comparison Property \(m(b-a)\le\int_a^b f\,dx\le M(b-a)\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Upper Bound</span>
+      <div class="sol-text">Since \(1+2e^x \ge 2e^x\) (because \(1\ge 0\)):
+        \[\frac{xe^x}{1+2e^x} \le \frac{xe^x}{2e^x} = \frac{x}{2}.\]
+        On \([0,1]\): \(\frac{x}{2}\le\frac{1}{2}\). So \(f(x)\le\frac{1}{2}\), and therefore:
+        \[\int_0^1 f\,dx \le \frac{1}{2}\cdot 1 = \frac{1}{2}. \quad\checkmark\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Lower Bound</span>
+      <div class="sol-text">Divide numerator and denominator by \(e^x\) to rewrite: \(f(x) = \dfrac{x}{e^{-x}+2}\).
+        On \([0,1]\): \(e^{-x}\le e^0 = 1\), so the denominator satisfies \(e^{-x}+2\le 3\). Therefore:
+        \[\frac{x}{e^{-x}+2} \ge \frac{x}{3}.\]
+        Integrating:
+        \[\int_0^1 f\,dx \ge \int_0^1\frac{x}{3}\,dx = \frac{1}{3}\cdot\frac{x^2}{2}\Big|_0^1 = \frac{1}{6}.\]
+        Since \(e>1\), we have \(\dfrac{1}{6e}<\dfrac{1}{6}\), so \(\displaystyle\int_0^1 f\,dx \ge \dfrac{1}{6} > \dfrac{1}{6e}\). \(\checkmark\)
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Conclusion</span>
+      <div class="sol-text">\(\dfrac{1}{6e}\le\dfrac{1}{6}\le\displaystyle\int_0^1\frac{xe^x}{1+2e^x}\,dx\le\dfrac{1}{2}\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Properties -->
+
+<!-- ─── Mean Value Theorem ────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Mean Value Theorem for Integrals</div>
+
+<!-- MVT ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Find all values \(c\) guaranteed by the Mean Value Theorem for Integrals for \(f(x)=x^2\) on \([1,4]\).</div>
+  <div class="problem-context">The MVT for integrals states: there exists \(c\in[a,b]\) with \(f(c)=\frac{1}{b-a}\int_a^b f\,dx\). Compute the average value first.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: compute the average value of \(f\), then solve \(f(c) = \text{average}\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Compute the average value:
+        \[f_{\text{avg}} = \frac{1}{4-1}\int_1^4 x^2\,dx = \frac{1}{3}\cdot\frac{x^3}{3}\Big|_1^4 = \frac{1}{3}\cdot\frac{64-1}{3} = \frac{63}{9} = 7.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Solve \(f(c) = 7\):
+        \[c^2 = 7 \implies c = \sqrt{7}\quad (\text{taking the positive root since } c\in[1,4]).\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(c = \sqrt{7}\approx 2.646\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+<!-- MVT ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Find all values \(c\) guaranteed by the Mean Value Theorem for Integrals for \(f(x)=\sin x\) on \([0,\pi]\).</div>
+  <div class="problem-context">The average value of \(\sin x\) on \([0,\pi]\) is a clean number. Solve for \(c\) and note there are two solutions on \([0,\pi]\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: compute the average, then use \(\sin c = \text{average}\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Compute the average value:
+        \[f_{\text{avg}} = \frac{1}{\pi-0}\int_0^\pi\sin x\,dx = \frac{1}{\pi}\big[-\cos x\big]_0^\pi = \frac{1}{\pi}\big[1+1\big] = \frac{2}{\pi}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Solve \(\sin c = \dfrac{2}{\pi}\) on \([0,\pi]\):
+        \[c = \arcsin\!\left(\frac{2}{\pi}\right)\quad\text{or}\quad c = \pi - \arcsin\!\left(\frac{2}{\pi}\right).\]
+        Both values lie in \([0,\pi]\). Numerically, \(c\approx 0.690\) or \(c\approx 2.452\).
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(c = \arcsin\!\dfrac{2}{\pi}\) and \(c = \pi - \arcsin\!\dfrac{2}{\pi}\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic MVT -->
+
+<!-- ─── Even and Odd Functions ────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Even and Odd Functions</div>
+
+<!-- Even/Odd ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Evaluate
+    \[\int_{-1/\sqrt{3}}^{1/\sqrt{3}} x^2\sqrt{3-x^6}\,dx.\]
+  </div>
+  <div class="problem-context">The integrand is even. Use symmetry to halve the interval, then apply the substitution \(u=x^3\), followed by a trigonometric substitution.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: symmetry + substitution \(u=x^3\) + trig sub \(u=\sqrt{3}\sin\theta\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Since \(f(x)=x^2\sqrt{3-x^6}\) satisfies \(f(-x)=(-x)^2\sqrt{3-(-x)^6}=f(x)\) (even), we have:
+        \[\int_{-1/\sqrt{3}}^{1/\sqrt{3}} x^2\sqrt{3-x^6}\,dx = 2\int_0^{1/\sqrt{3}}x^2\sqrt{3-x^6}\,dx.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Let \(u=x^3\), \(du=3x^2\,dx\). When \(x=0\): \(u=0\). When \(x=\frac{1}{\sqrt{3}}\): \(u=\frac{1}{(\sqrt{3})^3}=\frac{1}{3\sqrt{3}}\).
+        \[= 2\int_0^{1/(3\sqrt{3})}\sqrt{3-u^2}\,\frac{du}{3} = \frac{2}{3}\int_0^{1/(3\sqrt{3})}\sqrt{3-u^2}\,du.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 3</span>
+      <div class="sol-text">Let \(u=\sqrt{3}\sin\theta\), \(du=\sqrt{3}\cos\theta\,d\theta\). When \(u=0\): \(\theta=0\). When \(u=\frac{1}{3\sqrt{3}}\):
+        \[\sin\theta = \frac{u}{\sqrt{3}} = \frac{1/(3\sqrt{3})}{\sqrt{3}} = \frac{1}{3\sqrt{3}\cdot\sqrt{3}} = \frac{1}{3\cdot 3} = \frac{1}{9}.\]
+        So the upper limit is \(\theta = \arcsin\!\tfrac{1}{9}\).
+        \[\sqrt{3-u^2} = \sqrt{3-3\sin^2\theta}=\sqrt{3}\cos\theta.\]
+        The integral becomes:
+        \[\frac{2}{3}\int_0^{\arcsin(1/9)}\sqrt{3}\cos\theta\cdot\sqrt{3}\cos\theta\,d\theta = \frac{2}{3}\int_0^{\arcsin(1/9)}3\cos^2\theta\,d\theta = 2\int_0^{\arcsin(1/9)}\cos^2\theta\,d\theta.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 4</span>
+      <div class="sol-text">Use \(\cos^2\theta = \frac{1+\cos 2\theta}{2}\):
+        \[= 2\cdot\frac{1}{2}\int_0^{\arcsin(1/9)}(1+\cos 2\theta)\,d\theta = \Big[\theta + \tfrac{1}{2}\sin 2\theta\Big]_0^{\arcsin(1/9)}.\]
+        Apply \(\sin 2\theta = 2\sin\theta\cos\theta\) at \(\theta=\arcsin\!\tfrac{1}{9}\):
+        \[\sin\theta = \frac{1}{9},\quad \cos\theta = \sqrt{1-\frac{1}{81}}=\frac{\sqrt{80}}{9}=\frac{4\sqrt{5}}{9}.\]
+        \[\tfrac{1}{2}\sin 2\theta = \sin\theta\cos\theta = \frac{1}{9}\cdot\frac{4\sqrt{5}}{9} = \frac{4\sqrt{5}}{81}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\arcsin\!\dfrac{1}{9} + \dfrac{4\sqrt{5}}{81}\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+<!-- Even/Odd ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Evaluate
+    \[\int_{-3}^{3}\!\left(x^5\cos x + x^2\right)dx.\]
+  </div>
+  <div class="problem-context">Split the integrand into its odd and even parts, then use symmetry.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: determine the parity of each term and apply the symmetry rules for integrals over \([-a,a]\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text"><strong>Check parity of \(x^5\cos x\):</strong> replace \(x\) by \(-x\):
+        \[(-x)^5\cos(-x) = -x^5\cos x.\]
+        So \(x^5\cos x\) is <em>odd</em>. By the odd-function rule, \(\displaystyle\int_{-3}^3 x^5\cos x\,dx = 0\).
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text"><strong>Check parity of \(x^2\):</strong> \((-x)^2 = x^2\) — it is <em>even</em>. By the even-function rule:
+        \[\int_{-3}^3 x^2\,dx = 2\int_0^3 x^2\,dx = 2\cdot\frac{x^3}{3}\Big|_0^3 = 2\cdot 9 = 18.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(0 + 18 = 18\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Even/Odd -->
+
+</div><!-- end module 1 -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MODULE 2: INTEGRATION TECHNIQUES
+═══════════════════════════════════════════════════════ -->
+<div class="module">
+<div class="module-title">Module 2 &mdash; Integration Techniques</div>
+
+<!-- ─── u-substitution ────────────────────────────────── -->
+<div class="topic">
+<div class="topic-title"><i>u</i>-Substitution</div>
+
+<!-- u-sub ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int\sin^3 x\cos x\,dx\).</div>
+  <div class="problem-context">Let \(u = \sin x\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Sub</span>
+      <div class="sol-text">Let \(u=\sin x\), \(du=\cos x\,dx\):
+        \[\int u^3\,du = \frac{u^4}{4}+C = \frac{\sin^4 x}{4}+C.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{\sin^4 x}{4}+C\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- u-sub ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int_0^1 xe^{x^2}\,dx\).</div>
+  <div class="problem-context">Let \(u = x^2\). Don't forget to change the limits.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Sub</span>
+      <div class="sol-text">Let \(u=x^2\), \(du=2x\,dx\). When \(x=0\): \(u=0\); when \(x=1\): \(u=1\).
+        \[\int_0^1 xe^{x^2}\,dx = \frac{1}{2}\int_0^1 e^u\,du = \frac{1}{2}\big[e^u\big]_0^1 = \frac{e-1}{2}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{e-1}{2}\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- u-sub ③ -->
+<div class="problem-item">
+  <div class="problem-label">Problem ③</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int\frac{x^2}{\sqrt{x^3+1}}\,dx\).</div>
+  <div class="problem-context">Let \(u = x^3+1\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Sub</span>
+      <div class="sol-text">Let \(u=x^3+1\), \(du=3x^2\,dx\):
+        \[\int\frac{x^2}{\sqrt{u}}\cdot\frac{du}{3x^2} = \frac{1}{3}\int u^{-1/2}\,du = \frac{1}{3}\cdot 2u^{1/2}+C = \frac{2}{3}\sqrt{x^3+1}+C.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{2}{3}\sqrt{x^3+1}+C\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- u-sub ④ -->
+<div class="problem-item">
+  <div class="problem-label">Problem ④</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int\tan x\,dx\).</div>
+  <div class="problem-context">Rewrite \(\tan x = \frac{\sin x}{\cos x}\), then let \(u = \cos x\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Sub</span>
+      <div class="sol-text">Let \(u=\cos x\), \(du=-\sin x\,dx\):
+        \[\int\frac{\sin x}{\cos x}\,dx = -\int\frac{du}{u} = -\ln|u|+C = -\ln|\cos x|+C = \ln|\sec x|+C.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\ln|\sec x|+C\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic u-sub -->
+
+<!-- ─── Integration by Parts ──────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Integration by Parts</div>
+
+<!-- IBP ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int xe^x\,dx\).</div>
+  <div class="problem-context">Let \(u=x\), \(dv=e^x\,dx\). The formula is \(\int u\,dv = uv - \int v\,du\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Setup</span>
+      <div class="sol-text">\(u=x\), \(du=dx\), \(dv=e^x\,dx\), \(v=e^x\).</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Apply</span>
+      <div class="sol-text">\(\displaystyle\int xe^x\,dx = xe^x - \int e^x\,dx = xe^x - e^x + C = (x-1)e^x+C.\)</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\((x-1)e^x+C\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- IBP ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int x^2\sin x\,dx\).</div>
+  <div class="problem-context">Apply IBP twice. Each application reduces the power of \(x\) by one.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: two rounds of IBP to reduce \(x^2\to x\to 1\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Round 1</span>
+      <div class="sol-text">\(u=x^2\), \(du=2x\,dx\), \(dv=\sin x\,dx\), \(v=-\cos x\):
+        \[\int x^2\sin x\,dx = -x^2\cos x + 2\int x\cos x\,dx.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Round 2</span>
+      <div class="sol-text">For \(\int x\cos x\,dx\): \(u=x\), \(du=dx\), \(dv=\cos x\,dx\), \(v=\sin x\):
+        \[\int x\cos x\,dx = x\sin x - \int\sin x\,dx = x\sin x + \cos x.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Combine</span>
+      <div class="sol-text">\[\int x^2\sin x\,dx = -x^2\cos x + 2(x\sin x + \cos x)+C = -x^2\cos x + 2x\sin x + 2\cos x + C.\]</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(-x^2\cos x + 2x\sin x + 2\cos x + C\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic IBP -->
+
+<!-- ─── Inverse-Trig / Trigonometric Substitution ─────── -->
+<div class="topic">
+<div class="topic-title">Inverse-Trig &amp; Trigonometric Substitution</div>
+
+<!-- Trig ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int\frac{2}{x\sqrt{x^6-4}}\,dx\).</div>
+  <div class="problem-context">Two substitutions: first \(u=x^3\) to clear the degree, then recognize the arcsecant form \(\int\frac{du}{u\sqrt{u^2-a^2}}=\frac{1}{a}\sec^{-1}\!\left|\frac{u}{a}\right|+C\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: power-reducing sub \(u=x^3\) followed by the standard arcsecant formula.</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Let \(u=x^3\), \(du=3x^2\,dx\). Note \(x^6=u^2\) and \(x^3=u\), so:
+        \[\int\frac{2}{x\sqrt{u^2-4}}\cdot\frac{du}{3x^2} = \int\frac{2}{3x^3\sqrt{u^2-4}}\,du = \int\frac{2}{3u\sqrt{u^2-4}}\,du.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Apply the arcsecant formula with \(a=2\):
+        \[\int\frac{2}{3u\sqrt{u^2-4}}\,du = \frac{2}{3}\cdot\frac{1}{2}\sec^{-1}\!\left|\frac{u}{2}\right|+C = \frac{1}{3}\sec^{-1}\!\left|\frac{x^3}{2}\right|+C.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{1}{3}\sec^{-1}\!\left|\dfrac{x^3}{2}\right|+C\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- Trig ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int\frac{dx}{x\sqrt{1-(\ln x)^2}}\).</div>
+  <div class="problem-context">One substitution reduces this to a standard arcsin form.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Sub</span>
+      <div class="sol-text">Let \(u=\ln x\), \(du=\frac{dx}{x}\):
+        \[\int\frac{du}{\sqrt{1-u^2}} = \arcsin u + C = \arcsin(\ln x)+C.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\arcsin(\ln x)+C\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Trig -->
+
+<!-- ─── Partial Fractions ──────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Partial Fractions</div>
+
+<!-- Partial Fractions ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int\frac{3x+2}{x^2-x-2}\,dx\).</div>
+  <div class="problem-context">Factor the denominator, then decompose into partial fractions.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: factor denominator, set up \(\frac{A}{x-2}+\frac{B}{x+1}\), solve for \(A\) and \(B\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Factor: \(x^2-x-2=(x-2)(x+1)\). Write:
+        \[\frac{3x+2}{(x-2)(x+1)}=\frac{A}{x-2}+\frac{B}{x+1}\implies 3x+2=A(x+1)+B(x-2).\]
+        \(x=2\): \(8=3A\implies A=\tfrac{8}{3}\). \quad\(x=-1\): \(-1=-3B\implies B=\tfrac{1}{3}\).
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Integrate:
+        \[\int\!\left(\frac{8/3}{x-2}+\frac{1/3}{x+1}\right)\!dx = \frac{8}{3}\ln|x-2|+\frac{1}{3}\ln|x+1|+C.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{8}{3}\ln|x-2|+\dfrac{1}{3}\ln|x+1|+C\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Partial Fractions -->
+
+<!-- ─── Completing the Square ─────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Completing the Square</div>
+
+<!-- CTS ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int\frac{dx}{x^2+4x+13}\).</div>
+  <div class="problem-context">Complete the square in the denominator to obtain the arctangent form \(\int\frac{du}{u^2+a^2}=\frac{1}{a}\arctan\frac{u}{a}+C\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Complete the square: \(x^2+4x+13=(x+2)^2+9\). Let \(u=x+2\), \(du=dx\):
+        \[\int\frac{du}{u^2+9}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Apply the arctangent formula with \(a=3\):
+        \[\int\frac{du}{u^2+9}=\frac{1}{3}\arctan\frac{u}{3}+C=\frac{1}{3}\arctan\frac{x+2}{3}+C.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{1}{3}\arctan\dfrac{x+2}{3}+C\)</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTS ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Evaluate \(\displaystyle\int\frac{dx}{\sqrt{-x^2+4x-3}}\).</div>
+  <div class="problem-context">Complete the square to rewrite the radicand as \(a^2-(x-h)^2\), then use the arcsin form.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Complete the square: \(-x^2+4x-3=-(x^2-4x+3)=-(x^2-4x+4)+1=1-(x-2)^2\). Let \(u=x-2\):
+        \[\int\frac{du}{\sqrt{1-u^2}}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Standard arcsin form:
+        \[\int\frac{du}{\sqrt{1-u^2}}=\arcsin u+C=\arcsin(x-2)+C.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\arcsin(x-2)+C\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic CTS -->
+
+</div><!-- end module 2 -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MODULE 3: APPLICATIONS OF INTEGRATION
+═══════════════════════════════════════════════════════ -->
+<div class="module">
+<div class="module-title">Module 3 &mdash; Applications of Integration</div>
+
+<!-- ─── Area ──────────────────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Area Between Curves</div>
+
+<!-- Area ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Find the area of the region bounded by \(y=x(2-x)\) and the \(x\)-axis.</div>
+  <div class="problem-context">Find the roots of \(x(2-x)=0\), verify the function is non-negative on the interval, then integrate.</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Setup</span>
+      <div class="sol-text">Roots: \(x=0\) and \(x=2\). On \([0,2]\): \(x(2-x)\ge 0\). Area:
+        \[A = \int_0^2(2x-x^2)\,dx = \Big[x^2-\frac{x^3}{3}\Big]_0^2 = 4-\frac{8}{3} = \frac{4}{3}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{4}{3}\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Area -->
+
+<!-- ─── Disk Method ────────────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Volumes — Disk Method</div>
+
+<!-- Disk ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Find the volume of the solid obtained by rotating the region bounded by \(y=2\sqrt{x}\), \(x=2\), and \(y=0\) about the \(x\)-axis.</div>
+  <div class="problem-context">Use the disk formula \(V=\pi\int_a^b[f(x)]^2\,dx\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Integrate</span>
+      <div class="sol-text">\[V = \pi\int_0^2(2\sqrt{x})^2\,dx = \pi\int_0^2 4x\,dx = \pi\Big[2x^2\Big]_0^2 = \pi\cdot 8 = 8\pi.\]</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(8\pi\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Disk -->
+
+<!-- ─── Washer Method ──────────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Volumes — Washer Method</div>
+
+<!-- Washer ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">Find the volume of the solid obtained by rotating the region between \(y=x\) (outer) and \(y=x^2\) (inner) on \([0,1]\) about the \(x\)-axis.</div>
+  <div class="problem-context">Use the washer formula \(V=\pi\int_a^b\!\left([R(x)]^2-[r(x)]^2\right)dx\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Verify</span>
+      <div class="sol-text">On \([0,1]\): \(x\ge x^2\), so \(R(x)=x\) (outer) and \(r(x)=x^2\) (inner). They intersect at \(x=0\) and \(x=1\). &#10003;</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Integrate</span>
+      <div class="sol-text">\[V = \pi\int_0^1(x^2-x^4)\,dx = \pi\!\left[\frac{x^3}{3}-\frac{x^5}{5}\right]_0^1 = \pi\!\left(\frac{1}{3}-\frac{1}{5}\right) = \pi\cdot\frac{2}{15} = \frac{2\pi}{15}.\]</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{2\pi}{15}\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Washer -->
+
+<!-- ─── Shell Method ───────────────────────────────────── -->
+<div class="topic">
+<div class="topic-title">Volumes — Shell Method</div>
+
+<!-- Shell ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">Find the volume of the solid obtained by rotating the region bounded by \(y=x^3\), \(x=2\), and \(y=0\) about the \(y\)-axis.</div>
+  <div class="problem-context">Use the shell formula \(V=2\pi\int_a^b x\,f(x)\,dx\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Integrate</span>
+      <div class="sol-text">\[V = 2\pi\int_0^2 x\cdot x^3\,dx = 2\pi\int_0^2 x^4\,dx = 2\pi\cdot\frac{x^5}{5}\Big|_0^2 = 2\pi\cdot\frac{32}{5} = \frac{64\pi}{5}.\]</div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{64\pi}{5}\)</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Shell -->
+
+<!-- ─── Volumes by Cross-Sections (Slicing) ───────────── -->
+<div class="topic">
+<div class="topic-title">Volumes by Cross-Sections (Slicing)</div>
+
+<!-- Slicing ① -->
+<div class="problem-item">
+  <div class="problem-label">Problem ①</div>
+  <div class="problem-q">The base of a solid is a disk of radius \(R\). Cross-sections perpendicular to the \(x\)-axis are <strong>equilateral triangles</strong>. Find the volume.</div>
+  <div class="problem-context">At position \(x\), the chord of the disk has length \(2\sqrt{R^2-x^2}\). Use the equilateral triangle area formula \(A = \frac{\sqrt{3}}{4}s^2\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-intro">Strategy: find \(A(x)\) using the equilateral triangle formula, then integrate from \(-R\) to \(R\).</div>
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">The base of each cross-sectional triangle equals the chord: \(s=2\sqrt{R^2-x^2}\).
+        For an equilateral triangle with side \(s\):
+        \[A(x) = \frac{\sqrt{3}}{4}s^2 = \frac{\sqrt{3}}{4}\cdot 4(R^2-x^2) = \sqrt{3}(R^2-x^2).\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Integrate using symmetry:
+        \[V = \int_{-R}^R\sqrt{3}(R^2-x^2)\,dx = 2\sqrt{3}\int_0^R(R^2-x^2)\,dx = 2\sqrt{3}\!\left[R^2 x - \frac{x^3}{3}\right]_0^R = 2\sqrt{3}\cdot\frac{2R^3}{3} = \frac{4\sqrt{3}\,R^3}{3}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{4\sqrt{3}\,R^3}{3}\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slicing ② -->
+<div class="problem-item">
+  <div class="problem-label">Problem ②</div>
+  <div class="problem-q">The base of a solid is a disk of radius \(R\). Cross-sections perpendicular to the \(x\)-axis are <strong>semicircles</strong>. Find the volume.</div>
+  <div class="problem-context">The diameter of each semicircular cross-section equals the chord of the disk. Recall \(A = \frac{\pi r^2}{2}\).</div>
+  <button class="reveal-btn" onclick="reveal(this)">Show Solution</button>
+  <div class="solution-box">
+    <div class="sol-step">
+      <span class="sol-num">Step 1</span>
+      <div class="sol-text">Chord at \(x\): \(2\sqrt{R^2-x^2}\). Diameter of semicircle = chord, so radius \(r=\sqrt{R^2-x^2}\).
+        \[A(x) = \frac{\pi}{2}r^2 = \frac{\pi}{2}(R^2-x^2).\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num">Step 2</span>
+      <div class="sol-text">Integrate using symmetry:
+        \[V = \int_{-R}^R\frac{\pi}{2}(R^2-x^2)\,dx = \pi\int_0^R(R^2-x^2)\,dx = \pi\!\left[R^2 x-\frac{x^3}{3}\right]_0^R = \pi\cdot\frac{2R^3}{3} = \frac{2\pi R^3}{3}.\]
+      </div>
+    </div>
+    <div class="sol-step">
+      <span class="sol-num ans">Answer</span>
+      <div class="sol-text">\(\dfrac{2\pi R^3}{3}\) &#10003;</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end topic Slicing -->
+
+</div><!-- end module 3 -->
+
+</main>
+
+<script>
+  function reveal(btn) {
+    var box = btn.nextElementSibling;
+    if (box.style.display === 'block') {
+      box.style.display = 'none';
+      btn.textContent = 'Show Solution';
+    } else {
+      box.style.display = 'block';
+      btn.textContent = 'Hide Solution';
+      if (window.MathJax) {
+        MathJax.typesetPromise([box]);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
